@@ -25,15 +25,17 @@ if [ -z "$COLUMNS" ]; then
     exit 1
 fi
 
-ggrep -v '^#' ms_data_dirty.csv | \
+grep -v '^#' ms_data_dirty.csv | \
 sed '/^[[:space:]]*$/d' | \
-cut -d ',' -f"$COLUMNS" | \    
-awk -F ',' '$5 >= 2.0 && $5 <= 8.0' > ms_data.csv 
+sed -e 's/,\+/,/g' | \
+sed -e 's/^,//g' -e 's/,$//g' | \
+cut -d ',' -f"$COLUMNS" |\
+awk -F ',' '$5 >= 2.0 && $5 <= 8.0' > ms_data.csv
 
 # Create insurance.lst file 
 echo -e "insurance_type\nBronze\nSilver\nGold\bPlatinum" > insurance.lst
 
-# Generate summary of processed data 
+# Generate summary of processed data
 echo "Total number of visits: $(($(wc -l < ms_data.csv) -1))"
-echo "First few records: 
+echo "First few records:"
 head -n 5 ms_data.csv 
