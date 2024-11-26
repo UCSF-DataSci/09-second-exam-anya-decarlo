@@ -1,6 +1,4 @@
 #!/bin/bash 
-
-
 # Clean raw data and save to ms_data.csv
 grep -v '^#' ms_data_dirty.csv | 		
 sed '/^[[:space:]]*$/d' | 
