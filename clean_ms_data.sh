@@ -21,6 +21,8 @@ if [-z "$COLUMNS" ]; then
     exit 1
 fi
 
+echo "Cleaning data.."
+
 # Clean raw data and save to ms_data.csv
 grep -v '^#' ms_data_dirty.csv | \		
 sed '/^[[:space:]]*$/d' | \
