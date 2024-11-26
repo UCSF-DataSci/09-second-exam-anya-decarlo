@@ -33,9 +33,9 @@ cut -d ',' -f"$COLUMNS" |\
 awk -F ',' '$5 >= 2.0 && $5 <= 8.0' > ms_data.csv
 
 # Create insurance.lst file 
-echo -e "insurance_type\nBronze\nSilver\nGold\bPlatinum" > insurance.lst
+echo -e "insurance_type\nBronze\nSilver\nGold\nPlatinum" > insurance.lst
 
 # Generate summary of processed data
 echo "Total number of visits: $(($(wc -l < ms_data.csv) -1))"
 echo "First few records:"
-head -n 5 ms_data.csv 
+head -n 6 ms_data.csv 
