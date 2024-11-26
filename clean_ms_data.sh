@@ -25,7 +25,11 @@ if [ -z "$COLUMNS" ]; then
     exit 1
 fi
 
-cut -d ',' -f"$COLUMNS" ms_data_dirty.csv > ms_data.csv
+grep -v '^#' ms_data_dirty.csv | \
+sed '/^[[:space:]]*$/d' | \
+sed -e 's/,\+/,/g' | \
+sed -e 's/^,//g' -e 's/,$//g' | \
+cut -d ',' -f"$COLUMNS" > ms_data.csv
 
 # Create insurance.lst file 
 echo -e "insurance_type\nBronze\nSilver\nGold\bPlatinum" > insurance.lst
