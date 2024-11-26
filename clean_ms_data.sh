@@ -3,11 +3,23 @@
 # Make output file for cleaned data
 touch ms_data.csv
 
+# Debug: Print the header line 
+echo "Header line:"
+sed -n '5p' ms_data.dirty.csv
+
 # Get columns 
+echo "Identifying columns.."
 COLUMNS=$(sed -n '5p' ms_data_dirty.csv | \
 tr ',' '\n' | \
  awk '/^(patient_id|visit_date|age|education_level|walking_speed)$/{print NR}'| \
     paste -sd,)
+
+# Debug: Print the columns found 
+echo "Selected columns: $COLUMNS" 
+if [-z "$COLUMNS" ]; then 
+    echo "Error: Failed to identify required columns"
+    exit 1
+fi
 
 # Clean raw data and save to ms_data.csv
 grep -v '^#' ms_data_dirty.csv | \		
