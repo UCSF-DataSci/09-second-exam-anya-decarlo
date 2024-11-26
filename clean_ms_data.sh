@@ -4,7 +4,7 @@
 touch ms_data.csv
 
 # Get columns 
-COLUMNS = $(sed -n '5p' ms_data_dirty.csv | \
+COLUMNS=$(sed -n '5p' ms_data_dirty.csv | \
 tr ',' '\n' | \
  awk '/^(patient_id|visit_date|age|education_level|walking_speed)$/{print NR}'| \
     paste -sd,)
