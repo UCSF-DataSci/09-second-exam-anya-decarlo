@@ -3,14 +3,12 @@
 # Make output file for cleaned data
 touch ms_data.csv
 
-
-# Clean raw data and save to ms_data.csv
-grep -v '^#' ms_data_dirty.csv | \
+echo "Identifying columns.."
+COLUMNS=$(grep -v '^#' ms_data_dirty.csv | \
 sed '/^[[:space:]]*$/d' | \
 sed -e 's/,\+/,/g' | \
-sed -e 's/^,//g' -e 's/,$//g' |\
-head -n 1 |\
-COLUMNS=$(head -n 1 | \
+sed -e 's/^,//g' -e 's/,$//g' | \
+head -n 1 | \
 tr ',' '\n' | \
 awk '{print NR ":" $0}' | \
 grep -E ':(patient_id|visit_date|age|education_level|walking_speed)$' | \
