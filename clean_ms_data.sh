@@ -25,10 +25,10 @@ if [ -z "$COLUMNS" ]; then
     exit 1
 fi
 
-grep -v '^#' ms_data_dirty.csv | \
+ggrep -v '^#' ms_data_dirty.csv | \
 sed '/^[[:space:]]*$/d' | \
-awk -F ',' '$5 != "" && $5 >= 2.0 && $5 <= 8.0'
-cut -d ',' -f"$COLUMNS" > ms_data.csv
+cut -d ',' -f"$COLUMNS" | \    
+awk -F ',' '$5 >= 2.0 && $5 <= 8.0' > ms_data.csv 
 
 # Create insurance.lst file 
 echo -e "insurance_type\nBronze\nSilver\nGold\bPlatinum" > insurance.lst
