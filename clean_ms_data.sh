@@ -8,10 +8,10 @@ sed '/^[[:space:]]*$/d' |
 sed -e 's/,\+/,/g' | 
 sed -e 's/^,//g' -e 's/,$//g' | 
 cut -d ',' -f$(
-	head -n1 ms_data_dirty.csv |
-	tr ',''\n'|
-	awk '/^(patient_id|visit_date|age|education_level|walking_speed)$/{print NR}'|
-	paste -sd, 
+    head -n1 ms_data_dirty.csv |
+    tr ',' '\n'|
+    awk '/^(patient_id|visit_date|age|education_level|walking_speed)$/{print NR}'|
+    paste -sd,
     )|  
 awk -F ',' '$5 >= 2.0 && $5 <= 8.0' > ms_data.csv
 
