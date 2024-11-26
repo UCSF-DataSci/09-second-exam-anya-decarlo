@@ -25,17 +25,13 @@ if [ -z "$COLUMNS" ]; then
     exit 1
 fi
 
-# First get just the header row with our selected columns
-grep -v '^#' ms_data_dirty.csv | \
-head -n 1 | \
-cut -d ',' -f"$COLUMNS" > ms_data.csv
 
 grep -v '^#' ms_data_dirty.csv | \
 sed '/^[[:space:]]*$/d' | \
 sed -e 's/,\+/,/g' | \
 sed -e 's/^,//g' -e 's/,$//g' | \
 cut -d ',' -f"$COLUMNS" |\
-awk -F ',' '$5 >= 2.0 && $5 <= 8.0' > ms_data.csv
+#awk -F ',' '$5 >= 2.0 && $5 <= 8.0' > ms_data.csv
 
 # Create insurance.lst file 
 echo -e "insurance_type\nBronze\nSilver\nGold\nPlatinum" > insurance.lst
