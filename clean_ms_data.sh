@@ -10,9 +10,13 @@ sed -n '5p' ms_data_dirty.csv
 # Get columns 
 echo "Identifying columns.."
 COLUMNS=$(sed -n '5p' ms_data_dirty.csv | \
-tr ',' '\n' | \
- awk '/^(patient_id|visit_date|age|education_level|walking_speed)$/{print NR}'| \
-    paste -sd,)
+    tr ',' '\n' | \
+    awk '{printf "%d:", NR} $0 ~ /^(patient_id|visit_date|age|education_level|walking_speed)$/{print $0}'| \
+    grep ":" |\
+    cut -d ':' :\
+    tr '\n' ',')
+  
+  Echo "Found columns:" $COLUMNS
 
 # Debug: Print the columns found 
 echo "Selected columns: $COLUMNS" 
