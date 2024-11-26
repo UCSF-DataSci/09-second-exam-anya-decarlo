@@ -16,7 +16,7 @@ tr ',' '\n' | \
 
 # Debug: Print the columns found 
 echo "Selected columns: $COLUMNS" 
-if [-z "$COLUMNS" ]; then 
+if [ -z "$COLUMNS" ]; then 
     echo "Error: Failed to identify required columns"
     exit 1
 fi
