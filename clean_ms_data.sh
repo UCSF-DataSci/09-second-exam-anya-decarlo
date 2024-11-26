@@ -24,3 +24,13 @@ if [ -z "$COLUMNS" ]; then
     echo "Error: Failed to identify required columns"
     exit 1
 fi
+
+cut -d ',' -f"$COLUMNS" ms_data_dirty.csv > ms_data.csv
+
+# Create insurance.lst file 
+echo -e "insurance_type\nBronze\nSilver\nGold\bPlatinum" > insurance.lst
+
+# Generate summary of processed data 
+echo "Total number of visits: $(($(wc -l < ms_data.csv) -1))"
+echo "First few records: 
+head -n 5 ms_data.csv 
