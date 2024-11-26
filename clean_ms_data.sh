@@ -10,6 +10,8 @@ sed '/^[[:space:]]*$/d' | \
 sed -e 's/,\+/,/g' | \
 sed -e 's/^,//g' -e 's/,$//g' |\
 
+head -n 1 ms_data_dirty.csv
+
 # Get columns
 echo "Identifying columns.."
 COLUMNS=$(head -n 1 ms_data_dirty.csv |\
