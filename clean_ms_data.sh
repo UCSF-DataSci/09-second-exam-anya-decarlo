@@ -5,7 +5,7 @@ touch ms_data.csv
 
 # Debug: Print the header line 
 echo "Header line:"
-sed -n '5p' ms_data.dirty.csv
+sed -n '5p' ms_data_dirty.csv
 
 # Get columns 
 echo "Identifying columns.."
