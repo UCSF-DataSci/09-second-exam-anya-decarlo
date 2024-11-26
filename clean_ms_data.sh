@@ -13,7 +13,7 @@ cut -d ',' -f$(
 	awk '/^(patient_id|visit_date|age|education_level|walking_speed)$/{print NR}'|
 	paste -sd, 
     )|  
-| awk -F ',' '$5 >= 2.0 && $5 <== 8.0 > ms_data.csv
+awk -F ',' '$5 >= 2.0 && $5 <== 8.0 > ms_data.csv
 
 
 # Create insurance.lst file 
