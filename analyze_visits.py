@@ -2,6 +2,10 @@ import os
 import numpy as np
 import pandas as pd 
 import random 
+import matplotlib.pyplot as plt
+import seaborn as sns
+import statsmodels.api as sm
+
 
 # Read processed CSV file 
 df = pd.read_csv("ms_data.csv")
@@ -87,7 +91,8 @@ df['insurance_type'] = df['patient_id'].map(patient_insurance)
 pre_cost = 1000
 
 # Map each patient's visit cost to all their visits and calculate visit cost using reductions from insurance effect 
-df['visit_cost'] = pre_cost * (1 +df['insurance_type'].map(INSURANCE_EFFECT))
+# Introduce uniform randomness so probability across price variation range is equal
+df['visit_cost'] = pre_cost * np.random.uniform(0.8,1.2, size=len(df)) * (1 +df['insurance_type'].map(INSURANCE_EFFECT))
 
 
 # Convert insurance_type to category since it has fixed values and for accurate data analysis 
@@ -100,11 +105,28 @@ summarize_data = pd.DataFrame({
     })
 print(summarize_data)
 
+#Calculate mean walking spead by education level 
+mean_speed_education = df.groupby('education_level', observed=True)['walking_speed'].mean()
 
-# Visualize age effects on walking speed to assess if linear relationship exisits 
+# Calculate mean costs by insurance type 
+mean_costs_insurance = df.groupby('insurance_type', observed=True)['visit_cost'].mean()
 
-plt.scatter(df['age'], df['walking_speed'])
-plt.xlabel('Age')
-plt.ylabel('Walking Speed')
-plt.title('Age vs. Walking Speed')
-plt.show()
+# Conduct Linear Regerssion to find age effects on walking speed
+X = sm.add_constant(df['age'])  # Add a constant term (for intercept)
+y = df['walking_speed']
+model = sm.OLS(y, X).fit()
+age_coefficient = model.params['age']
+
+#Write results into text file to organize results
+with open("summary_statistics.txt", "w") as file:
+    file.write("Summary Statistics\n")
+    file.write("===================\n\n")
+    file.write("Mean Walking Speed by Education Level:\n")
+    file.write(mean_speed_education.to_string()) 
+    file.write("\n\n")
+    file.write("Mean Costs by Insurance Type:\n")
+    file.write(mean_costs_insurance.to_string())
+    file.write("\n\n")
+    file.write(f"Walking speed decreases by {age_coefficient:.4f} feet/second per year.")
+
+               

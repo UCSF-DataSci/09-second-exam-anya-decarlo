@@ -1,0 +1,18 @@
+Summary Statistics
+===================
+
+Mean Walking Speed by Education Level:
+education_level
+Bachelors       4.030120
+Graduate        4.400470
+High School     3.265618
+Some College    3.659335
+
+Mean Costs by Insurance Type:
+insurance_type
+Bronze      400.988693
+Gold        199.553931
+Platinum    100.143867
+Silver      349.546921
+
+Walking speed decreases by -0.0293 feet/second per year.
