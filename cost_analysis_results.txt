@@ -1,0 +1,26 @@
+Cost Analysis Results
+========================
+
+Descriptive Statistics for Visit Costs by Insurance Type:
+                 count        mean        std         min         25%         50%         75%         max
+insurance_type                                                                                           
+Bronze          3970.0  398.456815  45.858628  320.053275  359.489818  398.348300  438.175092  479.878069
+Gold            3278.0  200.002281  22.984927  160.013184  180.387434  199.437503  219.693708  239.998553
+Platinum        2502.0  100.063554  11.557724   80.001776   90.066730  100.154350  110.113063  119.998229
+Silver          4145.0  350.446096  40.254834  280.020862  315.549672  350.468632  385.370312  419.974775
+
+ANOVA Results:
+                     df        sum_sq       mean_sq             F  PR(>F)
+insurance_type      3.0  1.780841e+08  5.936137e+07  48144.531191     0.0
+Residual        13891.0  1.712736e+07  1.232983e+03           NaN     NaN
+
+Pairwise T-tests (Bonferroni Correction):
+Bronze vs Silver: t-statistic = 50.1765, p-value = 0.0000e+00, Bonferroni-corrected p-value = 0.0000e+00, Cohen's d = 1.11
+Bronze vs Gold: t-statistic = 225.4815, p-value = 0.0000e+00, Bonferroni-corrected p-value = 0.0000e+00, Cohen's d = 5.32
+Bronze vs Platinum: t-statistic = 319.1371, p-value = 0.0000e+00, Bonferroni-corrected p-value = 0.0000e+00, Cohen's d = 8.15
+Silver vs Gold: t-statistic = 190.7860, p-value = 0.0000e+00, Bonferroni-corrected p-value = 0.0000e+00, Cohen's d = 4.46
+Silver vs Platinum: t-statistic = 303.6502, p-value = 0.0000e+00, Bonferroni-corrected p-value = 0.0000e+00, Cohen's d = 7.69
+Gold vs Platinum: t-statistic = 199.1179, p-value = 0.0000e+00, Bonferroni-corrected p-value = 0.0000e+00, Cohen's d = 5.29
+
+
+The box plot for visit costs by insurance type has been saved as boxplot_with_visit_costs.png.

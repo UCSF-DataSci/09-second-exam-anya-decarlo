@@ -1,0 +1,42 @@
+Final Model Summary:
+====================
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          walking_speed   R-squared:                       0.803
+Model:                            OLS   Adj. R-squared:                  0.803
+Method:                 Least Squares   F-statistic:                     8071.
+Date:                Mon, 02 Dec 2024   Prob (F-statistic):               0.00
+Time:                        18:13:52   Log-Likelihood:                -4693.8
+No. Observations:               13895   AIC:                             9404.
+Df Residuals:                   13887   BIC:                             9464.
+Df Model:                           7                                         
+Covariance Type:            nonrobust                                         
+=======================================================================================================
+                                          coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------------------------------
+Intercept                               5.6137      0.018    307.156      0.000       5.578       5.650
+education_level[T.Graduate]             0.4153      0.025     16.389      0.000       0.366       0.465
+education_level[T.High School]         -0.8078      0.026    -31.424      0.000      -0.858      -0.757
+education_level[T.Some College]        -0.3594      0.026    -13.990      0.000      -0.410      -0.309
+age                                    -0.0302      0.000    -91.494      0.000      -0.031      -0.030
+education_level[T.Graduate]:age        -0.0003      0.000     -0.653      0.514      -0.001       0.001
+education_level[T.High School]:age      0.0002      0.000      0.428      0.668      -0.001       0.001
+education_level[T.Some College]:age    -0.0007      0.000     -1.583      0.113      -0.002       0.000
+==============================================================================
+Omnibus:                        4.068   Durbin-Watson:                   1.890
+Prob(Omnibus):                  0.131   Jarque-Bera (JB):                4.085
+Skew:                           0.037   Prob(JB):                        0.130
+Kurtosis:                       2.958   Cond. No.                         835.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+Interaction Effects Summary:
+education_level[T.Graduate]:age: Coefficient = -0.0003, P-value = 0.5138
+  -> No significant interaction detected.
+education_level[T.High School]:age: Coefficient = 0.0002, P-value = 0.6685
+  -> No significant interaction detected.
+education_level[T.Some College]:age: Coefficient = -0.0007, P-value = 0.1134
+  -> No significant interaction detected.

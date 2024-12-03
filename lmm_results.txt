@@ -1,0 +1,21 @@
+Linear Mixed-Effects Model Results to Analyze Walking Speed
+===========================================================
+
+                   Mixed Linear Model Regression Results
+============================================================================
+Model:                   MixedLM      Dependent Variable:      walking_speed
+No. Observations:        13895        Method:                  REML         
+No. Groups:              1000         Scale:                   0.1151       
+Min. group size:         8            Log-Likelihood:          -4720.8384   
+Max. group size:         18           Converged:               Yes          
+Mean group size:         13.9                                               
+----------------------------------------------------------------------------
+                                Coef.  Std.Err.    z     P>|z| [0.025 0.975]
+----------------------------------------------------------------------------
+Intercept                        5.625    0.010  539.186 0.000  5.604  5.645
+education_level[T.Graduate]      0.400    0.008   48.660 0.000  0.384  0.416
+education_level[T.High School]  -0.798    0.008  -97.567 0.000 -0.814 -0.782
+education_level[T.Some College] -0.398    0.008  -48.490 0.000 -0.414 -0.382
+age                             -0.030    0.000 -185.014 0.000 -0.031 -0.030
+Group Var                        0.000    0.001                             
+============================================================================

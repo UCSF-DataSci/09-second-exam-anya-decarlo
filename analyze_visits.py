@@ -98,6 +98,8 @@ df['visit_cost'] = pre_cost * np.random.uniform(0.8,1.2, size=len(df)) * (1 +df[
 # Convert insurance_type to category since it has fixed values and for accurate data analysis 
 df['insurance_type'] = df['insurance_type'].astype('category')
 
+df.to_csv("ms_data_new.csv", index=False)
+
 # Print final state analysis to ensure all Dtype accurate 
 summarize_data = pd.DataFrame({
         'Column': df.columns,
@@ -129,4 +131,4 @@ with open("summary_statistics.txt", "w") as file:
     file.write("\n\n")
     file.write(f"Walking speed decreases by {age_coefficient:.4f} feet/second per year.")
 
-               
+

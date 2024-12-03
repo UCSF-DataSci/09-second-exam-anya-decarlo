@@ -1,0 +1,44 @@
+1. CONFOUNDING ASSESSMENT
+========================
+
+education_level[T.Graduate]:
+  Crude Coefficient: 0.3704
+  Adjusted Coefficient: 0.4153
+  Percent Change: -12.14%
+  CONCLUSION: Confounding by age detected.
+
+education_level[T.High School]:
+  Crude Coefficient: -0.7645
+  Adjusted Coefficient: -0.8078
+  Percent Change: -5.67%
+  CONCLUSION: No significant confounding by age.
+
+education_level[T.Some College]:
+  Crude Coefficient: -0.3708
+  Adjusted Coefficient: -0.3594
+  Percent Change: 3.06%
+  CONCLUSION: No significant confounding by age.
+
+
+2. EDUCATION-AGE INTERACTION ANALYSIS
+==================================
+(Results from fully adjusted model)
+
+education_level[T.Graduate]:age:
+  Coefficient: -0.0003
+  P-value: 0.5138
+  95% CI: [-0.0012, 0.0006]
+  CONCLUSION: No significant interaction detected.
+
+education_level[T.High School]:age:
+  Coefficient: 0.0002
+  P-value: 0.6685
+  95% CI: [-0.0007, 0.0011]
+  CONCLUSION: No significant interaction detected.
+
+education_level[T.Some College]:age:
+  Coefficient: -0.0007
+  P-value: 0.1134
+  95% CI: [-0.0017, 0.0002]
+  CONCLUSION: No significant interaction detected.
+

@@ -10,9 +10,9 @@ Some College    3.659335
 
 Mean Costs by Insurance Type:
 insurance_type
-Bronze      400.988693
-Gold        199.553931
-Platinum    100.143867
-Silver      349.546921
+Bronze      398.456815
+Gold        200.002281
+Platinum    100.063554
+Silver      350.446096
 
 Walking speed decreases by -0.0293 feet/second per year.
