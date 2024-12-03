@@ -20,7 +20,42 @@ education_level[T.Some College]:
   CONCLUSION: No significant confounding by age.
 
 
-2. EDUCATION-AGE INTERACTION ANALYSIS
+2. FINAL ADJUSTED MODEL RESULTS
+============================
+Main Effects:
+--------------
+Intercept:
+  Coefficient: 5.6137
+  Std.Error: 0.0183
+  P-value: 0.0000
+  95% CI: [5.5779, 5.6496]
+
+education_level[T.Graduate]:
+  Coefficient: 0.4153
+  Std.Error: 0.0253
+  P-value: 0.0000
+  95% CI: [0.3657, 0.4650]
+
+education_level[T.High School]:
+  Coefficient: -0.8078
+  Std.Error: 0.0257
+  P-value: 0.0000
+  95% CI: [-0.8582, -0.7574]
+
+education_level[T.Some College]:
+  Coefficient: -0.3594
+  Std.Error: 0.0257
+  P-value: 0.0000
+  95% CI: [-0.4098, -0.3091]
+
+age:
+  Coefficient: -0.0302
+  Std.Error: 0.0003
+  P-value: 0.0000
+  95% CI: [-0.0309, -0.0296]
+
+
+3. EDUCATION-AGE INTERACTION ANALYSIS
 ==================================
 (Results from fully adjusted model)
 

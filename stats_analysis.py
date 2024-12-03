@@ -20,7 +20,7 @@ md =MixedLM.from_formula("walking_speed ~ education_level + age", data=df, group
 mdf = md.fit()
 
 # Write results to a file
-with open("lmm_results.txt", "w") as file:
+with open("analyze_walking_speed.txt", "w") as file:
     file.write("Linear Mixed-Effects Model Results to Analyze Walking Speed\n")
     file.write("===========================================================\n\n")
     file.write(mdf.summary().as_text())
@@ -173,10 +173,21 @@ confounding_df = pd.DataFrame(results)
 # use the fully adjusted model with interaction
 final_model = smf.ols("walking_speed ~ education_level + age + education_level:age", data=df).fit()
 
-# Get interaction results
+# Get all model terms (both main effects and interactions)
+model_results = []
+for term in final_model.params.index:
+    model_results.append({
+        "Term": term,
+        "Coefficient": final_model.params[term],
+        "Std.Error": final_model.bse[term],
+        "P-value": final_model.pvalues[term],
+        "CI_Lower": final_model.conf_int().loc[term][0],
+        "CI_Upper": final_model.conf_int().loc[term][1]
+    })
+
+# Get interaction terms specifically
 interaction_terms = [term for term in final_model.params.index 
                     if "education_level" in term and ":age" in term]
-
 interaction_results = []
 for term in interaction_terms:
     coef = final_model.params[term]
@@ -207,8 +218,21 @@ with open("advanced_analysis.txt", "w") as file:
             file.write("  CONCLUSION: No significant confounding by age.\n")
         file.write("\n")
     
+    # Write full model results
+    file.write("\n2. FINAL ADJUSTED MODEL RESULTS\n")
+    file.write("============================\n")
+    file.write("Main Effects:\n")
+    file.write("--------------\n")
+    for result in model_results:
+        if ":age" not in result["Term"]:
+            file.write(f"{result['Term']}:\n")
+            file.write(f"  Coefficient: {result['Coefficient']:.4f}\n")
+            file.write(f"  Std.Error: {result['Std.Error']:.4f}\n")
+            file.write(f"  P-value: {result['P-value']:.4f}\n")
+            file.write(f"  95% CI: [{result['CI_Lower']:.4f}, {result['CI_Upper']:.4f}]\n\n")
+    
     # Write interaction analysis
-    file.write("\n2. EDUCATION-AGE INTERACTION ANALYSIS\n")
+    file.write("\n3. EDUCATION-AGE INTERACTION ANALYSIS\n")
     file.write("==================================\n")
     file.write("(Results from fully adjusted model)\n\n")
     for result in interaction_results:
