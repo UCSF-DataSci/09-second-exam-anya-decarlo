@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import statsmodels.api as sm
 
+os.makedirs('results', exist_ok=True)
 
 # Read processed CSV file 
 df = pd.read_csv("ms_data.csv")
